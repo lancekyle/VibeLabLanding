@@ -138,10 +138,10 @@
                 </h1>
             </div>
             
-            <!-- Two-column layout for middle notes -->
-            <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Two-column layout for middle notes with fixed sizes -->
+            <div class="w-full flex flex-col md:flex-row gap-6 justify-center">
                 <!-- Purple Note - If you feel like -->
-                <div class="sticky-note purple-note" style="height: fit-content; width: 100%; padding: 1.5rem;">
+                <div class="sticky-note purple-note" style="height: fit-content; width: 300px; padding: 1.5rem;">
                     <h2 class="text-4xl font-bold mb-2">IF you feel like:</h2>
                     <ul class="sticky-list text-2xl" style="margin-bottom: 0;">
                         <li>Tech changes take forever</li>
@@ -151,13 +151,13 @@
                 </div>
                 
                 <!-- Green Note - Newsletter Benefits -->
-                <div class="sticky-note green-note" style="width: 100%; padding: 1.5rem;">
-                    <h2 class="text-4xl font-bold mb-4 md:whitespace-nowrap">Get The Vibe Lab Newsletter</h2>
+                <div class="sticky-note green-note" style="width: 350px; padding: 1.5rem; overflow: hidden;">
+                    <h2 class="text-4xl font-bold mb-4">Get The Vibe Lab Newsletter</h2>
                     <ul class="sticky-list text-2xl">
-                        <li class="md:whitespace-nowrap"><span class="icon-emoji">🔄</span>AI-powered workflows</li>
-                        <li class="md:whitespace-nowrap"><span class="icon-emoji">🚀</span>Stack modernization ideas</li>
-                        <li class="md:whitespace-nowrap"><span class="icon-emoji">📊</span>Experiments from real enterprise</li>
-                        <li class="md:whitespace-nowrap"><span class="icon-emoji">🔐</span>Frameworks built for governance & scale</li>
+                        <li><span class="icon-emoji">🔄</span>AI-powered workflows</li>
+                        <li><span class="icon-emoji">🚀</span>Stack modernization ideas</li>
+                        <li><span class="icon-emoji">📊</span>Experiments from real enterprise</li>
+                        <li><span class="icon-emoji">🔐</span>Frameworks built for governance & scale</li>
                     </ul>
                 </div>
             </div>
