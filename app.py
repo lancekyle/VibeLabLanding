@@ -10,8 +10,13 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # Initialize Supabase client
-supabase_url = os.environ.get("SUPABASE_URL")
-supabase_key = os.environ.get("SUPABASE_ANON_KEY")
+supabase_url = os.environ.get("SUPABASE_URL", "")
+supabase_key = os.environ.get("SUPABASE_ANON_KEY", "")
+
+if not supabase_url or not supabase_key:
+    logger.error("Missing Supabase credentials. Please set SUPABASE_URL and SUPABASE_ANON_KEY environment variables.")
+    raise ValueError("Missing Supabase credentials")
+
 supabase = create_client(supabase_url, supabase_key)
 
 # Create the app
