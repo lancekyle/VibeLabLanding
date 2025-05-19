@@ -1,0 +1,93 @@
+Build a clean, modern one-page landing site for The Vibe Lab, a newsletter and upcoming membership for business-side and IT leaders in legacy enterprises who want to modernize with AI, automation, and smarter systems.
+
+🎯 Overall Design Goals:
+Simple and professional layout
+
+Modern, tech-savvy design
+
+Responsive and mobile-first
+
+Uses the Inter font
+
+Clean, soft background (light slate) — optional subtle grid pattern
+
+Rounded white content cards with soft shadows
+
+🎨 Color Palette:
+Primary: #4338CA (Indigo)
+
+Secondary: #38BDF8 (Sky Blue)
+
+Highlight: #84CC16 (Lime Green)
+
+Neutral Base: #F1F5F9
+
+Text: #0F172A
+
+Use a gradient button (Indigo → Sky Blue) for the CTA
+
+🧱 Page Sections:
+🔹 Header:
+Centered content
+
+Large bold headline:
+
+From bottlenecks to breakthroughs — the AI-powered enterprise.
+
+Supporting line:
+
+Join The Vibe Lab newsletter and learn how real teams are building modern systems with AI, automation, and smarter tools.
+
+🔹 What You'll Get:
+Title: “What you’ll get”
+
+Bullet list:
+
+Tactics and tools for AI-powered transformation
+
+Real-world case studies and system breakdowns
+
+Insights from both enterprise and DTC experiments
+
+Templates and frameworks to use in your org
+
+🔹 Who It’s For:
+Title: “Who It’s For”
+
+Two short sub-lists:
+
+Business leaders in legacy enterprises
+
+Trying to modernize how your team works
+
+Want to move faster without waiting on IT
+
+Exploring AI, automation, and new tools — but unsure where to start
+
+Focused on future-proofing your stack and your business model
+
+Don’t want to get run over by younger, nimbler orgs
+
+Enterprise IT, enablement, and architecture teams
+
+Looking to enable smarter, safer innovation
+
+Navigating governance, security, and business pressure
+
+Want to transform legacy infrastructure into modern systems
+
+Ready to shift from gatekeepers to strategic partners
+
+🔹 Call to Action:
+Title: “Become a founding subscriber”
+
+Text: “Get the newsletter. First invites go to email subscribers.”
+
+Email input field + “Subscribe for free” gradient button
+
+🔹 Footer:
+Centered text
+
+Light gray font:
+
+© 2025 The Vibe Lab. Built for the future of modern enterprise.
