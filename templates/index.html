@@ -29,7 +29,7 @@
                         'text': '#0F172A',
                     },
                     boxShadow: {
-                        'note': '3px 3px 5px rgba(0, 0, 0, 0.1)',
+                        'note': '3px 3px 10px rgba(0, 0, 0, 0.15)',
                     }
                 }
             }
@@ -73,17 +73,17 @@
         <div class="w-full flex flex-col md:grid md:grid-cols-2 gap-6 md:items-start md:mt-8">
             
             <!-- Yellow Note - Main Headline -->
-            <div class="sticky-note yellow-note p-6 rounded-md max-w-lg mx-auto md:mx-0 md:col-span-2 text-center md:transform md:rotate-1">
-                <h1 class="text-2xl md:text-3xl font-bold mb-3">
+            <div class="sticky-note yellow-note p-8 mx-auto md:col-span-2 md:transform md:rotate-1">
+                <h1 class="text-3xl md:text-4xl font-bold mb-3 text-center">
                     From bottlenecks to breakthroughs —<br> 
                     AI-powered enterprise
                 </h1>
             </div>
             
             <!-- Purple Note - Pain Points -->
-            <div class="sticky-note purple-note p-6 rounded-md md:transform md:-rotate-1">
-                <h2 class="text-xl font-bold mb-4">If you feel...</h2>
-                <ul class="space-y-3 ml-5 list-disc">
+            <div class="sticky-note purple-note p-8 md:transform md:-rotate-1">
+                <h2 class="text-2xl font-bold mb-6">If you feel...</h2>
+                <ul class="space-y-4 ml-5 list-disc text-lg">
                     <li>Stuck in process gridlock</li>
                     <li>Tech changes take forever</li>
                     <li>Always met with resistance from IT leadership</li>
@@ -92,9 +92,9 @@
             </div>
             
             <!-- Green Note - What You Get -->
-            <div class="sticky-note green-note p-6 rounded-md md:transform md:rotate-1">
-                <h2 class="text-xl font-bold mb-4">Get theVibeLab.ai Newsletter</h2>
-                <ul class="space-y-3 ml-5 list-disc">
+            <div class="sticky-note green-note p-8 md:transform md:rotate-1">
+                <h2 class="text-2xl font-bold mb-6">Get theVibeLab.ai Newsletter</h2>
+                <ul class="space-y-4 ml-5 list-disc text-lg">
                     <li>AI-powered workflows</li>
                     <li>Stack modernization ideas</li>
                     <li>Experiments from real enterprise teams</li>
@@ -103,26 +103,26 @@
             </div>
             
             <!-- Blue Note - CTA -->
-            <div class="sticky-note blue-note p-6 rounded-md md:col-span-2 max-w-lg mx-auto md:mx-0 md:transform md:-rotate-1">
-                <h2 class="text-xl font-bold mb-3 text-center">
+            <div class="sticky-note blue-note p-8 md:col-span-2 mx-auto md:transform md:-rotate-1">
+                <h2 class="text-2xl font-bold mb-5 text-center">
                     Subscribe now! Get access to the newsletter and early access to the private membership community at:
                 </h2>
                 
-                <form id="subscribe-form" class="space-y-4 mt-4">
+                <form id="subscribe-form" class="space-y-4 mt-6 max-w-lg mx-auto">
                     <div>
                         <input 
                             type="email" 
                             id="email-input" 
                             name="email" 
-                            class="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none form-input" 
+                            class="w-full px-4 py-3 border border-gray-300 focus:outline-none form-input text-lg" 
                             placeholder="Enter your email address"
                         >
-                        <p id="form-message" class="mt-2 text-sm"></p>
+                        <p id="form-message" class="mt-2 text-base"></p>
                     </div>
                     <button 
                         type="submit" 
                         id="subscribe-btn" 
-                        class="w-full py-3 px-6 rounded-md text-white font-medium submit-button"
+                        class="w-full py-3 px-6 text-white font-medium submit-button text-lg"
                     >
                         Subscribe
                     </button>
@@ -131,7 +131,7 @@
         </div>
 
         <!-- Footer -->
-        <footer class="text-center text-gray-600 pt-12 text-sm">
+        <footer class="text-center text-gray-600 pt-12 text-base">
             <p>© 2025 TheVibeLab.ai. Built for the future of modern enterprise.</p>
         </footer>
     
