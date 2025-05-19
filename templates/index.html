@@ -19,14 +19,6 @@
                 extend: {
                     fontFamily: {
                         'hand': ['Caveat', 'cursive'],
-                    },
-                    colors: {
-                        'yellow-note': '#FFE352',
-                        'purple-note': '#D8A6DE',
-                        'green-note': '#9FE772',
-                        'orange-note': '#FFBA52',
-                        'blue-btn': '#3B82F6',
-                        'text': '#000000',
                     }
                 }
             }
@@ -57,6 +49,23 @@
         .sticky-note:hover {
             transform: translateY(-5px);
             box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Exact colors from the reference image */
+        .yellow-note { 
+            background-color: #FFE24D; 
+        }
+        
+        .purple-note { 
+            background-color: #D9A1D8; 
+        }
+        
+        .green-note { 
+            background-color: #A2EA75; 
+        }
+        
+        .orange-note { 
+            background-color: #FFBB55; 
         }
         
         .bold-hand {
@@ -102,6 +111,12 @@
         
         #subscribe-btn:hover {
             background-color: #2563EB;
+        }
+        
+        /* Ensure white background and increase contrast */
+        input {
+            background-color: white;
+            color: black;
         }
     </style>
 </head>
