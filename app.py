@@ -1,31 +1,32 @@
 import os
-from flask import Flask, render_template, request, jsonify, flash
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.orm import DeclarativeBase
+import logging
+from datetime import datetime
+from flask import Flask, render_template, request, jsonify
 from werkzeug.middleware.proxy_fix import ProxyFix
+from supabase import create_client
 
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
-class Base(DeclarativeBase):
-    pass
+# Initialize Supabase client
+supabase_url = os.environ.get("SUPABASE_URL")
+supabase_key = os.environ.get("SUPABASE_ANON_KEY")
+supabase = create_client(supabase_url, supabase_key)
 
-
-db = SQLAlchemy(model_class=Base)
-# create the app
+# Create the app
 app = Flask(__name__)
 app.secret_key = os.environ.get("SESSION_SECRET", "dev-secret-key")
 app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)  # needed for url_for to generate with https
 
-# Configure SQLite database for simplicity
-app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL", "sqlite:///vibe_lab.db")
-app.config["SQLALCHEMY_ENGINE_OPTIONS"] = {
-    "pool_recycle": 300,
-    "pool_pre_ping": True,
-}
-# initialize the app with the extension
-db.init_app(app)
-
-# Import routes after app is initialized
-from models import Subscriber
+# Make sure the newsletter_subscribers table exists - will be created if it doesn't
+try:
+    # Check if table exists by querying it
+    supabase.table('newsletter_subscribers').select('*').limit(1).execute()
+    logger.info("Connected to Supabase newsletter_subscribers table")
+except Exception as e:
+    logger.warning(f"Table check error: {str(e)}")
+    logger.info("Note: The table will be created automatically with the first subscription if it doesn't exist")
 
 @app.route('/')
 def index():
@@ -41,22 +42,40 @@ def subscribe():
             return jsonify({'success': False, 'message': 'Email is required'}), 400
         
         # Check if email already exists
-        existing_subscriber = Subscriber.query.filter_by(email=email).first()
-        if existing_subscriber:
-            return jsonify({'success': False, 'message': 'Email already subscribed'}), 400
+        try:
+            response = supabase.table('newsletter_subscribers').select('*').eq('email', email).execute()
+            existing_subscribers = response.data
+            
+            if existing_subscribers and len(existing_subscribers) > 0:
+                return jsonify({
+                    'success': False, 
+                    'message': 'This email is already subscribed. Thanks for your enthusiasm!'
+                }), 400
+                
+        except Exception as e:
+            logger.error(f"Error checking existing email: {str(e)}")
+            # Continue with subscription attempt anyway
         
         # Create new subscriber
-        new_subscriber = Subscriber(email=email)
-        db.session.add(new_subscriber)
-        db.session.commit()
+        now = datetime.utcnow().isoformat()
+        subscriber_data = {
+            'email': email,
+            'created_at': now
+        }
         
-        return jsonify({'success': True, 'message': 'Successfully subscribed!'}), 200
+        response = supabase.table('newsletter_subscribers').insert(subscriber_data).execute()
+        
+        if response.data:
+            return jsonify({
+                'success': True, 
+                'message': 'Successfully subscribed! Welcome to TheVibeLab.ai community.'
+            }), 200
+        else:
+            raise Exception("No response data from Supabase insert")
     
     except Exception as e:
-        db.session.rollback()
-        app.logger.error(f"Error subscribing: {str(e)}")
-        return jsonify({'success': False, 'message': 'An error occurred while subscribing. Please try again.'}), 500
-
-# Initialize database
-with app.app_context():
-    db.create_all()
+        logger.error(f"Error subscribing: {str(e)}")
+        return jsonify({
+            'success': False, 
+            'message': 'An error occurred while subscribing. Please try again.'
+        }), 500
