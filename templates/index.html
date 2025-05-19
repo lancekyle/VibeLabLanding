@@ -6,10 +6,10 @@
     <title>TheVibeLab.ai - AI-Powered Enterprise</title>
     <meta name="description" content="Join The Vibe Lab newsletter and learn how real teams are building modern systems with AI, automation, and smarter tools.">
     
-    <!-- Google Fonts - Inter -->
+    <!-- Google Fonts - Inter and Comic Neue for sticky note feel -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -18,109 +18,120 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        'sans': ['Inter', 'sans-serif'],
+                        'sans': ['Comic Neue', 'sans-serif'],
+                        'inter': ['Inter', 'sans-serif'],
                     },
                     colors: {
-                        'indigo': '#4338CA',
-                        'sky': '#38BDF8',
-                        'lime': '#84CC16',
-                        'neutral': '#F1F5F9',
+                        'yellow-note': '#FFF176',
+                        'purple-note': '#CE93D8',
+                        'green-note': '#AED581',
+                        'blue-note': '#80DEEA',
                         'text': '#0F172A',
                     },
+                    boxShadow: {
+                        'note': '3px 3px 5px rgba(0, 0, 0, 0.1)',
+                    }
                 }
             }
         }
     </script>
     
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+    <style>
+        .sticky-note {
+            position: relative;
+            transform: rotate(0deg);
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.15);
+            transition: all 0.2s ease;
+        }
+        
+        .sticky-note:hover {
+            transform: rotate(0deg) translateY(-5px);
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .yellow-note { background-color: #FFF176; }
+        .purple-note { background-color: #CE93D8; }
+        .green-note { background-color: #AED581; }
+        .blue-note { background-color: #80DEEA; }
+        
+        .submit-button {
+            background-color: #1E88E5;
+            transition: all 0.2s ease;
+        }
+        
+        .submit-button:hover {
+            background-color: #1976D2;
+        }
+    </style>
 </head>
-<body class="font-sans text-text bg-neutral grid-bg min-h-screen">
+<body class="font-sans text-text bg-amber-50 min-h-screen py-8 md:py-12">
 
     <!-- Main Container -->
-    <div class="max-w-2xl mx-auto px-4 pt-16 pb-12">
+    <div class="max-w-4xl mx-auto px-4 pt-8 pb-12 flex flex-col items-center relative">
     
-        <!-- Logo -->
-        <div class="text-center mb-16">
-            <h1 class="font-bold text-2xl">
-                <span class="text-indigo">The</span>
-                <span class="text-lime">Vibe</span>
-                <span>Lab</span>
-                <span class="text-sky text-sm align-text-top">.ai</span>
-            </h1>
-        </div>
-        
-        <!-- Block 1: Big Idea -->
-        <div class="bg-white rounded-xl shadow-sm p-8 mb-10 max-w-xl mx-auto">
-            <h2 class="text-2xl font-bold mb-4 text-center">
-                From bottlenecks to breakthroughs — the AI-powered enterprise.
-            </h2>
-            <p class="text-gray-700 text-center mb-4">
-                While most teams are stuck in process and approvals, you'll be testing and scaling modern systems — with AI, automation, and smarter tooling doing the heavy lifting.
-            </p>
-            <p class="text-center text-sm text-indigo">
-                Get the newsletter from The Vibe Lab at <span class="font-semibold">TheVibeLab.ai</span>
-            </p>
-        </div>
-
-        <!-- Block 2: What You'll Get -->
-        <div class="bg-white rounded-xl shadow-sm p-8 mb-10 max-w-xl mx-auto">
-            <h2 class="text-xl font-semibold mb-6 text-indigo">
-                What you'll get in The Vibe Lab newsletter
-            </h2>
+        <!-- Sticky Notes Container - using flexbox and grid on different screen sizes -->
+        <div class="w-full flex flex-col md:grid md:grid-cols-2 gap-6 md:items-start md:mt-8">
             
-            <ul class="space-y-5">
-                <li class="flex items-start">
-                    <span class="text-lime mr-3 text-xl">🧠</span>
-                    <span>AI-powered workflows</span>
-                </li>
-                <li class="flex items-start">
-                    <span class="text-lime mr-3 text-xl">⚙️</span>
-                    <span>Stack modernization ideas</span>
-                </li>
-                <li class="flex items-start">
-                    <span class="text-lime mr-3 text-xl">📈</span>
-                    <span>Experiments from real enterprise teams</span>
-                </li>
-                <li class="flex items-start">
-                    <span class="text-lime mr-3 text-xl">🔐</span>
-                    <span>Frameworks built for governance & scale</span>
-                </li>
-            </ul>
-        </div>
-
-        <!-- Block 3: CTA -->
-        <div class="bg-white rounded-xl shadow-sm p-8 mb-10 max-w-xl mx-auto">
-            <h2 class="text-xl font-semibold mb-4 text-center">
-                Become a founding subscriber
-            </h2>
-            <p class="text-center mb-6">
-                Get The Vibe Lab newsletter — and early access to the private community at TheVibeLab.ai.
-            </p>
+            <!-- Yellow Note - Main Headline -->
+            <div class="sticky-note yellow-note p-6 rounded-md max-w-lg mx-auto md:mx-0 md:col-span-2 text-center md:transform md:rotate-1">
+                <h1 class="text-2xl md:text-3xl font-bold mb-3">
+                    From bottlenecks to breakthroughs —<br> 
+                    AI-powered enterprise
+                </h1>
+            </div>
             
-            <form id="subscribe-form" class="space-y-4">
-                <div>
-                    <input 
-                        type="email" 
-                        id="email-input" 
-                        name="email" 
-                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none form-input" 
-                        placeholder="Enter your email address"
+            <!-- Purple Note - Pain Points -->
+            <div class="sticky-note purple-note p-6 rounded-md md:transform md:-rotate-1">
+                <h2 class="text-xl font-bold mb-4">If you feel...</h2>
+                <ul class="space-y-3 ml-5 list-disc">
+                    <li>Stuck in process gridlock</li>
+                    <li>Tech changes take forever</li>
+                    <li>Always met with resistance from IT leadership</li>
+                    <li>There must be a better way!</li>
+                </ul>
+            </div>
+            
+            <!-- Green Note - What You Get -->
+            <div class="sticky-note green-note p-6 rounded-md md:transform md:rotate-1">
+                <h2 class="text-xl font-bold mb-4">Get theVibeLab.ai Newsletter</h2>
+                <ul class="space-y-3 ml-5 list-disc">
+                    <li>AI-powered workflows</li>
+                    <li>Stack modernization ideas</li>
+                    <li>Experiments from real enterprise teams</li>
+                    <li>Frameworks built for governance and scale</li>
+                </ul>
+            </div>
+            
+            <!-- Blue Note - CTA -->
+            <div class="sticky-note blue-note p-6 rounded-md md:col-span-2 max-w-lg mx-auto md:mx-0 md:transform md:-rotate-1">
+                <h2 class="text-xl font-bold mb-3 text-center">
+                    Subscribe now! Get access to the newsletter and early access to the private membership community at:
+                </h2>
+                
+                <form id="subscribe-form" class="space-y-4 mt-4">
+                    <div>
+                        <input 
+                            type="email" 
+                            id="email-input" 
+                            name="email" 
+                            class="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none form-input" 
+                            placeholder="Enter your email address"
+                        >
+                        <p id="form-message" class="mt-2 text-sm"></p>
+                    </div>
+                    <button 
+                        type="submit" 
+                        id="subscribe-btn" 
+                        class="w-full py-3 px-6 rounded-md text-white font-medium submit-button"
                     >
-                    <p id="form-message" class="mt-2 text-sm"></p>
-                </div>
-                <button 
-                    type="submit" 
-                    id="subscribe-btn" 
-                    class="w-full py-3 px-6 rounded-lg text-white font-medium gradient-btn"
-                >
-                    Subscribe for free
-                </button>
-            </form>
+                        Subscribe
+                    </button>
+                </form>
+            </div>
         </div>
 
         <!-- Footer -->
-        <footer class="text-center text-gray-500 pt-6 text-sm">
+        <footer class="text-center text-gray-600 pt-12 text-sm">
             <p>© 2025 TheVibeLab.ai. Built for the future of modern enterprise.</p>
         </footer>
     
