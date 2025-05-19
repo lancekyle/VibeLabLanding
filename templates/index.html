@@ -6,10 +6,10 @@
     <title>TheVibeLab.ai - AI-Powered Enterprise</title>
     <meta name="description" content="Join The Vibe Lab newsletter and learn how real teams are building modern systems with AI, automation, and smarter tools.">
     
-    <!-- Google Fonts - Handwritten style fonts -->
+    <!-- Google Fonts - Handwritten style font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Kalam:wght@300;400;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -18,18 +18,15 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        'sans': ['Patrick Hand', 'Architects Daughter', 'cursive'],
-                        'hand': ['Kalam', 'cursive'],
+                        'hand': ['Caveat', 'cursive'],
                     },
                     colors: {
-                        'yellow-note': '#FFF176',
-                        'purple-note': '#CE93D8',
-                        'green-note': '#AED581',
-                        'blue-note': '#80DEEA',
-                        'text': '#0F172A',
-                    },
-                    boxShadow: {
-                        'note': '3px 3px 10px rgba(0, 0, 0, 0.15)',
+                        'yellow-note': '#FFE352',
+                        'purple-note': '#D8A6DE',
+                        'green-note': '#9FE772',
+                        'orange-note': '#FFBA52',
+                        'blue-btn': '#3B82F6',
+                        'text': '#000000',
                     }
                 }
             }
@@ -37,100 +34,133 @@
     </script>
     
     <style>
+        body {
+            background-color: #FAF9F6;
+            background-image: 
+                linear-gradient(rgba(200, 200, 200, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(200, 200, 200, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            font-family: 'Caveat', cursive;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+        
         .sticky-note {
             position: relative;
-            transform: rotate(0deg);
-            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.15);
-            transition: all 0.2s ease;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            transition: transform 0.2s ease;
+            color: #000;
+            font-size: 1.25rem;
         }
         
         .sticky-note:hover {
-            transform: rotate(0deg) translateY(-5px);
-            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.15);
         }
         
-        .yellow-note { background-color: #FFF176; }
-        .purple-note { background-color: #CE93D8; }
-        .green-note { background-color: #AED581; }
-        .blue-note { background-color: #80DEEA; }
-        
-        .submit-button {
-            background-color: #1E88E5;
-            transition: all 0.2s ease;
-            font-family: 'Patrick Hand', cursive;
+        .bold-hand {
+            font-weight: 700;
         }
         
-        .submit-button:hover {
-            background-color: #1976D2;
+        ul.sticky-list {
+            list-style-type: none;
+            padding-left: 0.5rem;
         }
         
-        /* Slightly irregular text for handwritten feel */
-        .handwritten h1, .handwritten h2 {
-            letter-spacing: 0.5px;
-            line-height: 1.3;
+        ul.sticky-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
         }
         
-        .handwritten li, .handwritten p {
-            letter-spacing: 0.3px;
-            line-height: 1.5;
+        ul.sticky-list li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        .icon-emoji {
+            font-size: 1.25rem;
+            margin-right: 0.5rem;
+            display: inline-block;
         }
         
         input, input::placeholder {
-            font-family: 'Patrick Hand', cursive;
+            font-family: inherit;
+            font-size: 1.1rem;
+        }
+        
+        #subscribe-btn {
+            background-color: #3B82F6;
+            transition: background-color 0.2s;
+            font-family: inherit;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        #subscribe-btn:hover {
+            background-color: #2563EB;
         }
     </style>
 </head>
-<body class="font-sans text-text bg-amber-50 min-h-screen py-8 md:py-12 handwritten">
+<body class="py-8 md:py-12">
 
-    <!-- Main Container -->
-    <div class="max-w-4xl mx-auto px-4 pt-8 pb-12 flex flex-col items-center relative">
+    <!-- Main Container with Grid background -->
+    <div class="max-w-3xl mx-auto px-4 pt-6 pb-12 flex flex-col items-center">
     
-        <!-- Sticky Notes Container - using flexbox and grid on different screen sizes -->
-        <div class="w-full flex flex-col md:grid md:grid-cols-2 gap-6 md:items-start md:mt-8">
+        <!-- Sticky Notes Container -->
+        <div class="w-full flex flex-col items-center gap-6 md:gap-10 pt-4 pb-8">
             
             <!-- Yellow Note - Main Headline -->
-            <div class="sticky-note yellow-note p-8 mx-auto md:col-span-2 md:transform md:rotate-1">
-                <h1 class="text-3xl md:text-4xl font-bold mb-3 text-center font-hand">
-                    From bottlenecks to breakthroughs —<br> 
-                    AI-powered enterprise
+            <div class="sticky-note yellow-note w-full md:w-10/12 mx-auto text-center">
+                <h1 class="text-3xl md:text-4xl font-bold mb-0 leading-tight">
+                    From bottlenecks to breakthroughs —<br>
+                    the AI-powered enterprise
                 </h1>
             </div>
             
-            <!-- Purple Note - Pain Points -->
-            <div class="sticky-note purple-note p-8 md:transform md:-rotate-1">
-                <h2 class="text-2xl font-bold mb-6 font-hand">If you feel...</h2>
-                <ul class="space-y-4 ml-5 list-disc text-lg">
-                    <li>Stuck in process gridlock</li>
-                    <li>Tech changes take forever</li>
-                    <li>Always met with resistance from IT leadership</li>
-                    <li>There must be a better way!</li>
-                </ul>
-            </div>
-            
-            <!-- Green Note - What You Get -->
-            <div class="sticky-note green-note p-8 md:transform md:rotate-1">
-                <h2 class="text-2xl font-bold mb-6 font-hand">Get theVibeLab.ai Newsletter</h2>
-                <ul class="space-y-4 ml-5 list-disc text-lg">
-                    <li>AI-powered workflows</li>
-                    <li>Stack modernization ideas</li>
-                    <li>Experiments from real enterprise teams</li>
-                    <li>Frameworks built for governance and scale</li>
-                </ul>
-            </div>
-            
-            <!-- Blue Note - CTA -->
-            <div class="sticky-note blue-note p-8 md:col-span-2 mx-auto md:transform md:-rotate-1">
-                <h2 class="text-2xl font-bold mb-5 text-center font-hand">
-                    Subscribe now! Get access to the newsletter and early access to the private membership community at:
-                </h2>
+            <!-- Two-column layout for middle notes -->
+            <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Purple Note - If you feel like -->
+                <div class="sticky-note purple-note">
+                    <h2 class="text-2xl font-bold mb-4">IF you feel like:</h2>
+                    <ul class="sticky-list">
+                        <li>Tech changes take forever</li>
+                        <li>Always met with resistance from IT leadership</li>
+                        <li>There must be better way!</li>
+                    </ul>
+                </div>
                 
-                <form id="subscribe-form" class="space-y-4 mt-6 max-w-lg mx-auto">
+                <!-- Green Note - Newsletter Benefits -->
+                <div class="sticky-note green-note">
+                    <h2 class="text-2xl font-bold mb-4">Get the VibeLab.ai newsletter</h2>
+                    <ul class="sticky-list">
+                        <li><span class="icon-emoji">🔄</span>AI-powered workflows</li>
+                        <li><span class="icon-emoji">🚀</span>Stack modernization ideas</li>
+                        <li><span class="icon-emoji">📊</span>Experiments from real enterprise</li>
+                        <li><span class="icon-emoji">🔐</span>Frameworks built for governance & scale</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Orange Note - CTA -->
+            <div class="sticky-note orange-note w-full md:w-10/12 mx-auto">
+                <h2 class="text-2xl font-bold mb-4 text-center">
+                    Become a founding subscriber
+                </h2>
+                <p class="text-center mb-6">
+                    Get The Vibe Lab newsletter — and early access to the private community at TheVibeLab.ai.
+                </p>
+                
+                <form id="subscribe-form" class="space-y-4 max-w-md mx-auto">
                     <div>
                         <input 
                             type="email" 
                             id="email-input" 
                             name="email" 
-                            class="w-full px-4 py-3 border border-gray-300 focus:outline-none form-input text-lg" 
+                            class="w-full px-4 py-3 border border-gray-300 focus:outline-none rounded-md" 
                             placeholder="Enter your email address"
                         >
                         <p id="form-message" class="mt-2 text-base"></p>
@@ -138,16 +168,16 @@
                     <button 
                         type="submit" 
                         id="subscribe-btn" 
-                        class="w-full py-3 px-6 text-white font-medium submit-button text-lg"
+                        class="w-full py-3 px-6 text-white rounded-md"
                     >
-                        Subscribe
+                        Subscribe for free
                     </button>
                 </form>
             </div>
         </div>
 
         <!-- Footer -->
-        <footer class="text-center text-gray-600 pt-12 text-base">
+        <footer class="text-center text-gray-600 pt-6 text-sm font-inter">
             <p>© 2025 TheVibeLab.ai. Built for the future of modern enterprise.</p>
         </footer>
     
