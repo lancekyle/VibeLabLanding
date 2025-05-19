@@ -24,7 +24,7 @@
                         'indigo': '#4338CA',
                         'sky': '#38BDF8',
                         'lime': '#84CC16',
-                        'neutral': '#F8FAFC',
+                        'neutral': '#F1F5F9',
                         'text': '#0F172A',
                     },
                 }
@@ -35,148 +35,88 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
 </head>
-<body class="font-sans text-text bg-neutral min-h-screen">
+<body class="font-sans text-text bg-neutral grid-bg min-h-screen">
 
     <!-- Main Container -->
-    <div class="max-w-3xl mx-auto px-4 py-12">
+    <div class="max-w-2xl mx-auto px-4 pt-16 pb-12">
     
-        <!-- Header Section -->
-        <header class="mb-12">
-            <div class="flex justify-between items-center mb-16">
-                <div class="font-bold text-xl">
-                    <span class="text-indigo">The</span><span class="text-lime">Vibe</span> Lab
-                </div>
-                <button class="bg-indigo hover:bg-indigo/90 text-white px-5 py-2 rounded-md">
-                    Get featured
-                </button>
-            </div>
+        <!-- Logo -->
+        <div class="text-center mb-16">
+            <h1 class="font-bold text-2xl">
+                <span class="text-indigo">The</span>
+                <span class="text-lime">Vibe</span>
+                <span>Lab</span>
+            </h1>
+        </div>
+        
+        <!-- Block 1: Big Idea -->
+        <div class="bg-white rounded-xl shadow-sm p-8 mb-10 max-w-xl mx-auto">
+            <h2 class="text-2xl font-bold mb-4 text-center">
+                From bottlenecks to breakthroughs — the AI-powered enterprise.
+            </h2>
+            <p class="text-gray-700 text-center">
+                While most teams are stuck in process and approvals, you'll be testing and scaling modern systems — with AI, automation, and smarter tooling doing the heavy lifting.
+            </p>
+        </div>
+
+        <!-- Block 2: What You'll Get -->
+        <div class="bg-white rounded-xl shadow-sm p-8 mb-10 max-w-xl mx-auto">
+            <h2 class="text-xl font-semibold mb-6 text-indigo">
+                What you'll get in The Vibe Lab newsletter
+            </h2>
             
-            <div class="bg-pink-100 rounded-lg p-6 mb-8 border-l-4 border-indigo">
-                <div class="flex items-start">
-                    <span class="text-lime font-bold mr-2">✓</span>
-                    <div>
-                        <h2 class="font-semibold text-xl mb-3">From bottlenecks to breakthroughs — the AI-powered enterprise</h2>
-                        <p class="text-gray-700">
-                            While everyone else is drowning in meetings and approvals, 
-                            you'll be building modern systems with AI, automation, and smarter tools.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </header>
+            <ul class="space-y-5">
+                <li class="flex items-start">
+                    <span class="text-lime mr-3 text-xl">🧠</span>
+                    <span>AI-powered workflows</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-lime mr-3 text-xl">⚙️</span>
+                    <span>Stack modernization ideas</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-lime mr-3 text-xl">📈</span>
+                    <span>Experiments from real enterprise teams</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-lime mr-3 text-xl">🔐</span>
+                    <span>Frameworks built for governance & scale</span>
+                </li>
+            </ul>
+        </div>
 
-        <!-- Features Section -->
-        <section class="mb-10">
-            <div class="bg-sky-100 rounded-lg p-6 mb-8">
-                <div class="flex items-start">
-                    <span class="text-indigo font-bold mr-2">✨</span>
-                    <div>
-                        <h2 class="font-semibold text-xl mb-4">What you'll get</h2>
-                        
-                        <div class="grid sm:grid-cols-2 gap-4 mt-4">
-                            <div class="bg-white rounded-md p-3 flex items-center">
-                                <span class="mr-2">⚡</span>
-                                <span>AI-powered transformation tactics</span>
-                            </div>
-                            <div class="bg-white rounded-md p-3 flex items-center">
-                                <span class="mr-2">📊</span>
-                                <span>Real-world case studies</span>
-                            </div>
-                            <div class="bg-white rounded-md p-3 flex items-center">
-                                <span class="mr-2">🔬</span>
-                                <span>Enterprise & DTC insights</span>
-                            </div>
-                            <div class="bg-white rounded-md p-3 flex items-center">
-                                <span class="mr-2">🚀</span>
-                                <span>Templates & frameworks</span>
-                            </div>
-                        </div>
-                    </div>
+        <!-- Block 3: CTA -->
+        <div class="bg-white rounded-xl shadow-sm p-8 mb-10 max-w-xl mx-auto">
+            <h2 class="text-xl font-semibold mb-4 text-center">
+                Become a founding subscriber
+            </h2>
+            <p class="text-center mb-6">
+                Get The Vibe Lab newsletter — and early access to the private community.
+            </p>
+            
+            <form id="subscribe-form" class="space-y-4">
+                <div>
+                    <input 
+                        type="email" 
+                        id="email-input" 
+                        name="email" 
+                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none form-input" 
+                        placeholder="Enter your email address"
+                    >
+                    <p id="form-message" class="mt-2 text-sm"></p>
                 </div>
-            </div>
-        </section>
-
-        <!-- Who It's For Section -->
-        <section class="mb-10">
-            <div class="bg-indigo-50 rounded-lg p-6">
-                <h2 class="font-semibold text-xl mb-4">Who It's For</h2>
-                
-                <div class="grid gap-6">
-                    <!-- Business Leaders -->
-                    <div class="bg-white rounded-md p-4">
-                        <h3 class="font-medium mb-2 text-indigo">Business leaders in legacy enterprises</h3>
-                        <ul class="space-y-2">
-                            <li class="flex items-start">
-                                <span class="text-sky mr-2">•</span>
-                                <span>Modernizing how your team works</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-sky mr-2">•</span>
-                                <span>Moving faster without waiting on IT</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-sky mr-2">•</span>
-                                <span>Future-proofing your stack and business model</span>
-                            </li>
-                        </ul>
-                    </div>
-                    
-                    <!-- IT Teams -->
-                    <div class="bg-white rounded-md p-4">
-                        <h3 class="font-medium mb-2 text-indigo">Enterprise IT & architecture teams</h3>
-                        <ul class="space-y-2">
-                            <li class="flex items-start">
-                                <span class="text-sky mr-2">•</span>
-                                <span>Enabling smarter, safer innovation</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-sky mr-2">•</span>
-                                <span>Transforming legacy into modern systems</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-sky mr-2">•</span>
-                                <span>Shifting from gatekeepers to strategic partners</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA Section -->
-        <section class="mb-10">
-            <div class="bg-lime-100 rounded-lg p-6">
-                <h2 class="font-semibold text-xl mb-4 text-center">Become a founding subscriber</h2>
-                
-                <p class="text-center mb-6">
-                    Get the newsletter. First invites go to email subscribers.
-                </p>
-                
-                <div class="max-w-lg mx-auto">
-                    <form id="subscribe-form" class="space-y-4">
-                        <div>
-                            <input type="email" id="email-input" name="email" class="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none" placeholder="Enter your email">
-                            <p id="form-message" class="mt-2 text-sm"></p>
-                        </div>
-                        <button type="submit" id="subscribe-btn" class="w-full py-3 px-6 rounded-md text-black font-medium bg-lime-400 hover:bg-lime-500 transition-colors">
-                            Subscribe for free
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </section>
-
-        <!-- Code Section -->
-        <section class="mb-8">
-            <div class="bg-gray-100 rounded-lg p-4 font-mono text-sm">
-                <pre>if (<span class="text-pink-500">vibe</span> = <span class="text-sky-500">true</span>) {
-    <span class="text-lime-600">transform</span>();
-}</pre>
-            </div>
-        </section>
+                <button 
+                    type="submit" 
+                    id="subscribe-btn" 
+                    class="w-full py-3 px-6 rounded-lg text-white font-medium gradient-btn"
+                >
+                    Subscribe for free
+                </button>
+            </form>
+        </div>
 
         <!-- Footer -->
-        <footer class="text-center text-gray-500 py-4 text-sm">
+        <footer class="text-center text-gray-500 pt-6 text-sm">
             <p>© 2025 The Vibe Lab. Built for the future of modern enterprise.</p>
         </footer>
     
