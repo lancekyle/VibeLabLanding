@@ -1,9 +1,22 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // Get the form element
-  const subscribeForm = document.getElementById('subscribe-form');
-  const emailInput = document.getElementById('email-input');
-  const subscribeBtn = document.getElementById('subscribe-btn');
-  const formMessage = document.getElementById('form-message');
+  // Cached DOM references. These will be refreshed whenever the
+  // form is re-rendered.
+  let subscribeForm;
+  let emailInput;
+  let subscribeBtn;
+  let formMessage;
+
+  // Helper to (re)grab form elements and attach the submit handler
+  function attachFormHandler() {
+    subscribeForm = document.getElementById('subscribe-form');
+    emailInput = document.getElementById('email-input');
+    subscribeBtn = document.getElementById('subscribe-btn');
+    formMessage = document.getElementById('form-message');
+
+    if (subscribeForm) {
+      subscribeForm.addEventListener('submit', handleSubmit);
+    }
+  }
   
   // Create a notification element for success/error messages
   let notificationElement = document.createElement('div');
@@ -11,52 +24,50 @@ document.addEventListener('DOMContentLoaded', function() {
   notificationElement.className = 'fixed top-0 left-0 right-0 p-4 opacity-0 transition-opacity duration-300 flex justify-center z-50';
   notificationElement.style.pointerEvents = 'none';
   document.body.appendChild(notificationElement);
+
+  // Initial attach of form handler
+  attachFormHandler();
   
   // Add form submission handler
-  if (subscribeForm) {
-    subscribeForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      // Reset form message
-      formMessage.textContent = '';
-      formMessage.classList.remove('text-red-500', 'text-green-500');
-      
-      // Get email value
-      const email = emailInput.value.trim();
-      
-      // Basic validation
-      if (!email) {
-        showMessage('Please enter your email address.', 'error');
-        return;
-      }
-      
-      if (!isValidEmail(email)) {
-        showMessage('Please enter a valid email address.', 'error');
-        return;
-      }
-      
-      // Disable button and show loading state
-      subscribeBtn.disabled = true;
-      subscribeBtn.innerHTML = 'Subscribing...';
-      
-      // Submit form via AJAX
-      const formData = new FormData(subscribeForm);
-      
-      fetch('/subscribe', {
-        method: 'POST',
-        body: formData
-      })
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    // Refresh references in case the form was recreated
+    emailInput = document.getElementById('email-input');
+    subscribeBtn = document.getElementById('subscribe-btn');
+    formMessage = document.getElementById('form-message');
+
+    formMessage.textContent = '';
+    formMessage.classList.remove('text-red-500', 'text-green-500');
+
+    const email = emailInput.value.trim();
+    if (!email) {
+      showMessage('Please enter your email address.', 'error');
+      return;
+    }
+    if (!isValidEmail(email)) {
+      showMessage('Please enter a valid email address.', 'error');
+      return;
+    }
+
+    subscribeBtn.disabled = true;
+    subscribeBtn.innerHTML = 'Subscribing...';
+
+    const formData = new FormData(subscribeForm);
+
+    fetch('/subscribe', {
+      method: 'POST',
+      body: formData
+    })
       .then(response => response.json())
       .then(data => {
         if (data.success) {
-          // Show success notification
           showNotification(data.message, 'success');
           emailInput.value = '';
-          
-          // Show a celebratory message in the form area
+
           const formContainer = subscribeForm.parentElement;
           const originalFormHTML = formContainer.innerHTML;
-          
+
           formContainer.innerHTML = `
             <div class="text-center py-6">
               <div class="text-2xl mb-4">🎉</div>
@@ -64,23 +75,12 @@ document.addEventListener('DOMContentLoaded', function() {
               <p class="mb-6">Thanks for joining TheVibeLab.ai community. We'll be in touch soon with enterprise transformation insights.</p>
             </div>
           `;
-          
-          // Optional: Reset form after a timeout
+
           setTimeout(() => {
             formContainer.innerHTML = originalFormHTML;
-            
-            // Re-attach event listeners
-            const newForm = document.getElementById('subscribe-form');
-            if (newForm) {
-              const newEmailInput = document.getElementById('email-input');
-              const newSubscribeBtn = document.getElementById('subscribe-btn');
-              const newFormMessage = document.getElementById('form-message');
-              
-              // Re-attach event listeners if needed
-              newForm.addEventListener('submit', subscribeForm.onsubmit);
-            }
+            attachFormHandler();
           }, 5000);
-          
+
         } else {
           showNotification(data.message, 'error');
           showMessage(data.message, 'error');
@@ -92,12 +92,12 @@ document.addEventListener('DOMContentLoaded', function() {
         showMessage('An error occurred. Please try again later.', 'error');
       })
       .finally(() => {
-        // Reset button state if the form is still visible
-        if (!subscribeBtn.disabled) return;
-        subscribeBtn.disabled = false;
-        subscribeBtn.innerHTML = 'Subscribe';
+        const btn = document.getElementById('subscribe-btn');
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = 'Subscribe';
+        }
       });
-    });
   }
   
   // Helper function to validate email
